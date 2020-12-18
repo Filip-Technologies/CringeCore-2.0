@@ -26,10 +26,10 @@ package wtf.filip.cringecore.gui;
 
 /**
  * https://www.nordtheme.com/
- * 
+ *
  * @author Filip
  */
-public enum Theme {
+public enum NordTheme {
     PolarNight0(0x2E3440),
     PolarNight1(0x3B4252),
     PolarNight2(0x434C5E),
@@ -40,7 +40,7 @@ public enum Theme {
 
     public int color;
 
-    Theme(int color) {
+    NordTheme(int color) {
         this.color = color;
     }
 }

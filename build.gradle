@@ -97,7 +97,6 @@ shadowJar {
 
     exclude 'dummyThing'
     exclude 'LICENSE.txt'
-    exclude '**/module-info.class'
 
     classifier = ''
 }
