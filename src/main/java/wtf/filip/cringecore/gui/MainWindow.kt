@@ -28,8 +28,10 @@ import club.sk1er.elementa.WindowScreen
 import club.sk1er.elementa.components.ScrollComponent
 import club.sk1er.elementa.components.UIRoundedRectangle
 import club.sk1er.elementa.components.UIText
+import club.sk1er.elementa.components.input.UITextInput
 import club.sk1er.elementa.constraints.CenterConstraint
 import club.sk1er.elementa.constraints.ConstantColorConstraint
+import club.sk1er.elementa.constraints.RelativeConstraint
 import club.sk1er.elementa.constraints.SiblingConstraint
 import club.sk1er.elementa.dsl.*
 import wtf.filip.cringecore.CringeCore
@@ -66,15 +68,19 @@ class MainWindow : WindowScreen() {
             height = 10.pixels()
         } childOf container
 
-//        val searchInput = UITextInput("Testing").constrain {
-//            x = 2.pixels()
-//            y = 2.pixels()
-//
-//            width = RelativeConstraint(1f) - 6.pixels()
-//        } childOf searchContainer
+        val searchInput = UITextInput("Testing").constrain {
+            x = 2.pixels()
+            y = 1.pixels()
+
+            width = RelativeConstraint(1f) - 6.pixels()
+        }.onMouseClick {
+            grabWindowFocus()
+        }.onMouseEnter {
+            grabWindowFocus()
+        } childOf searchContainer
 
 
-        val scrollContainer = ScrollComponent("TEST").constrain {
+        val scrollContainer = ScrollComponent().constrain {
             color = ConstantColorConstraint(Color(NordTheme.PolarNight1.color))
             x = 2.pixels()
             y = 2.pixels()

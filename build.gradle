@@ -58,7 +58,6 @@ repositories {
 
 dependencies {
     implementation "org.reflections:reflections:0.9.12"
-//    implementation 'club.sk1er:Elementa:129-10809-SNAPSHOT'
     implementation 'com.github.Sk1erLLC.Vigilance:Vigilance1.8.9:d2cb9e7'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72"
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.72"
