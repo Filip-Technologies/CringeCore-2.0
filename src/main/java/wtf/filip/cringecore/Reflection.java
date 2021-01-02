@@ -24,6 +24,7 @@
 
 package wtf.filip.cringecore;
 
+
 import club.sk1er.vigilance.Vigilant;
 import club.sk1er.vigilance.data.Property;
 import net.minecraftforge.fml.common.Mod;

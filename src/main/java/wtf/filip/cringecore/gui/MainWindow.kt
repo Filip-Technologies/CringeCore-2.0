@@ -40,8 +40,9 @@ import java.awt.Color
  * @author Filip
  */
 class MainWindow : WindowScreen() {
+
     init {
-        val container = UIRoundedRectangle(10f, 400).constrain {
+        val container = UIRoundedRectangle(10f).constrain {
             x = CenterConstraint()
             y = CenterConstraint()
             color = ConstantColorConstraint(Color(NordTheme.PolarNight0.color))
@@ -82,11 +83,11 @@ class MainWindow : WindowScreen() {
         } childOf container
 
         var initialX = 10
-        var initialY = 15
+        val initialY = 15
         for (module in CringeCore.INSTANCE.data.entries) {
-            val clazz = module.key;
+            val clazz = module.key
             val modName = Reflection.getInstance().getModName(clazz)
-            Module(modName, initialX.pixels(), initialY.pixels()).childOf(scrollContainer)
+            Module(modName, module.value, initialX.pixels(), initialY.pixels()).childOf(scrollContainer)
             initialX += 75
         }
 

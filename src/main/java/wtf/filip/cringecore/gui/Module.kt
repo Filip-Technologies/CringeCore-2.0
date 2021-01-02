@@ -31,19 +31,23 @@ import club.sk1er.elementa.constraints.ConstantColorConstraint
 import club.sk1er.elementa.constraints.PixelConstraint
 import club.sk1er.elementa.constraints.animation.Animations
 import club.sk1er.elementa.dsl.*
+import club.sk1er.vigilance.data.Property
 import java.awt.Color
+import java.lang.reflect.Field
+import java.util.*
 
 
 /**
  * @author Filip
  */
-class Module(modName: String, inX: PixelConstraint, inY : PixelConstraint) : UIRoundedRectangle(2f, 20) {
+class Module(modName: String, properties: HashMap<Field, Property>, inX: PixelConstraint, inY: PixelConstraint) :
+    UIRoundedRectangle(2f) {
 
     // TODO Pass properties for settings gui
     init {
         constrain {
             x = inX
-            y = inY;
+            y = inY
             color = ConstantColorConstraint(Color(NordTheme.PolarNight2.color))
             width = 70.pixels()
             height = 10.pixels()

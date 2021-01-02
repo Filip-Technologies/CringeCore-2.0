@@ -24,9 +24,18 @@
 
 package wtf.filip.cringecore.gui
 
+import club.sk1er.elementa.WindowScreen
+import club.sk1er.vigilance.data.Property
+import java.lang.reflect.Field
+import java.util.*
+
+
 /**
  * @author Filip
  */
-class ModuleSettings {
-    // TODO Settings
+class ModuleSettings(val modName: String, properties: HashMap<Field, Property>) : WindowScreen() {
+
+    init {
+
+    }
 }
