@@ -25,17 +25,39 @@
 package wtf.filip.cringecore.gui
 
 import club.sk1er.elementa.WindowScreen
+import club.sk1er.elementa.components.UIRoundedRectangle
+import club.sk1er.elementa.components.UIText
+import club.sk1er.elementa.constraints.CenterConstraint
+import club.sk1er.elementa.constraints.ConstantColorConstraint
+import club.sk1er.elementa.constraints.SiblingConstraint
+import club.sk1er.elementa.dsl.*
 import club.sk1er.vigilance.data.Property
+import java.awt.Color
 import java.lang.reflect.Field
-import java.util.*
 
 
 /**
  * @author Filip
  */
-class ModuleSettings(val modName: String, properties: HashMap<Field, Property>) : WindowScreen() {
+class ModuleSettings(modName: String, properties: HashMap<Field, Property>) : WindowScreen() {
 
     init {
+        val container = UIRoundedRectangle(10f).constrain {
+            x = CenterConstraint()
+            y = CenterConstraint()
+            color = ConstantColorConstraint(Color(NordTheme.PolarNight0.color))
+
+            width = 300.pixels()
+            height = 170.pixels()
+        } childOf window
+
+        UIText(modName).constrain {
+            x = CenterConstraint() - 50.pixels()
+            y = SiblingConstraint() + 4.pixels()
+            color = ConstantColorConstraint(Color(NordTheme.SnowStorm0.color))
+            textScale = (1f).pixels()
+        } childOf container
+
 
     }
 }

@@ -28,10 +28,8 @@ import club.sk1er.elementa.WindowScreen
 import club.sk1er.elementa.components.ScrollComponent
 import club.sk1er.elementa.components.UIRoundedRectangle
 import club.sk1er.elementa.components.UIText
-import club.sk1er.elementa.components.input.UITextInput
 import club.sk1er.elementa.constraints.CenterConstraint
 import club.sk1er.elementa.constraints.ConstantColorConstraint
-import club.sk1er.elementa.constraints.RelativeConstraint
 import club.sk1er.elementa.constraints.SiblingConstraint
 import club.sk1er.elementa.dsl.*
 import wtf.filip.cringecore.CringeCore
@@ -53,32 +51,12 @@ class MainWindow : WindowScreen() {
             height = 170.pixels()
         } childOf window
 
-        val title = UIText("${CringeCore.MOD_NAME} ${CringeCore.MOD_VERSION}").constrain {
+        UIText("${CringeCore.MOD_NAME} ${CringeCore.MOD_VERSION}").constrain {
             x = CenterConstraint() - 50.pixels()
             y = SiblingConstraint() + 4.pixels()
             color = ConstantColorConstraint(Color(NordTheme.SnowStorm0.color))
             textScale = (1f).pixels()
         } childOf container
-
-        val searchContainer = UIRoundedRectangle(2f).constrain {
-            x = SiblingConstraint() + 70.pixels()
-            y = 3.pixels()
-            color = ConstantColorConstraint(Color(NordTheme.SnowStorm0.color))
-            width = 70.pixels()
-            height = 10.pixels()
-        } childOf container
-
-        val searchInput = UITextInput("Testing").constrain {
-            x = 2.pixels()
-            y = 1.pixels()
-
-            width = RelativeConstraint(1f) - 6.pixels()
-        }.onMouseClick {
-            grabWindowFocus()
-        }.onMouseEnter {
-            grabWindowFocus()
-        } childOf searchContainer
-
 
         val scrollContainer = ScrollComponent().constrain {
             color = ConstantColorConstraint(Color(NordTheme.PolarNight1.color))
@@ -88,15 +66,16 @@ class MainWindow : WindowScreen() {
             height = container.getHeight().pixels() - 4.pixels()
         } childOf container
 
+
+        val modules = CringeCore.INSTANCE.data
         var initialX = 10
         val initialY = 15
-        for (module in CringeCore.INSTANCE.data.entries) {
+        for (module in modules) {
             val clazz = module.key
             val modName = Reflection.getInstance().getModName(clazz)
             Module(modName, module.value, initialX.pixels(), initialY.pixels()).childOf(scrollContainer)
             initialX += 75
         }
-
-
     }
 }
+
